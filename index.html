@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Asistente de Ubicación</title>
+<meta name="theme-color" content="#f6c9f0">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><span id="estadoRed" class="badge">en línea</span><h1>MI ASISTENTE<br>DE UBICACIÓN</h1></header>
+
+<div id="consentimiento" class="modal" role="dialog" aria-modal="true" aria-labelledby="tCons">
+  <div class="card">
+    <h2 id="tCons">Aviso de privacidad</h2>
+    <p>Esta app usa tu <b>ubicación</b> y tu <b>cámara</b> solo cuando tú lo pides. Los registros y fotos se guardan <b>únicamente en este dispositivo</b> (IndexedDB); no se envían a ningún servidor. Puedes borrarlos cuando quieras.</p>
+    <p class="chico">El mapa descarga mosaicos de OpenStreetMap, lo que revela al proveedor la zona que ves.</p>
+    <button id="aceptar" class="primario">Acepto y continuar</button>
+  </div>
+</div>
+
+<main>
+  <section id="panelMapa">
+    <div id="mapa" aria-label="Mapa interactivo"></div>
+    <div class="fila">
+      <button id="btnUbicar" class="primario">📍 Obtener mi ubicación</button>
+      <button id="btnGuardar" disabled>💾 Guardar ubicación</button>
+    </div>
+    <p id="infoUbic" role="status">Sin ubicación todavía.</p>
+    <div id="alertaPerm" class="alerta" hidden></div>
+    <label class="chk"><input type="checkbox" id="aprox"> Guardar ubicación aproximada (protege tu privacidad)</label>
+  </section>
+
+  <section id="panelCam">
+    <h2>📷 Cámara</h2>
+    <video id="video" autoplay playsinline muted hidden></video>
+    <canvas id="canvas" hidden></canvas>
+    <img id="vista" alt="Vista previa de la fotografía" hidden>
+    <div class="fila">
+      <button id="btnCam">Abrir cámara</button>
+      <button id="btnFoto" disabled>Tomar foto</button>
+      <button id="btnCerrarCam" disabled>Cerrar</button>
+    </div>
+    <label class="chk"><input type="checkbox" id="conUbic" checked> Incluir ubicación en la foto</label>
+    <input id="nota" type="text" maxlength="120" placeholder="Nota (opcional)">
+    <button id="btnGuardarFoto" disabled class="primario">Guardar foto</button>
+    <label class="alt">¿Sin acceso a la cámara? <input type="file" id="archivo" accept="image/*" capture="environment"></label>
+    <div id="alertaCam" class="alerta" hidden></div>
+  </section>
+
+  <section id="panelReg">
+    <h2>🗂️ Registros guardados <small id="conteo"></small></h2>
+    <div class="fila">
+      <button id="btnExportar">Exportar JSON</button>
+      <button id="btnBorrarTodo" class="peligro">Borrar todo</button>
+    </div>
+    <ul id="lista"></ul>
+  </section>
+</main>
+
+<nav class="dock" aria-label="Secciones"><a href="#panelMapa" aria-label="Mapa">🗺️</a><a href="#panelCam" aria-label="Cámara">📷</a><a href="#panelReg" aria-label="Registros">🗂️</a></nav>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

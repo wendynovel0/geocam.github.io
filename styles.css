@@ -1,0 +1,42 @@
+:root{--pink:#f6c9f0;--lime:#c6f432;--ink:#111;--card:#fff;--sand:#eadfca;--head:'Archivo Black',Impact,'Arial Black',sans-serif;--mono:'Space Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--mono);background:var(--pink);color:var(--ink);padding-bottom:110px}
+header{padding:1rem 1rem .4rem;max-width:1200px;margin:auto}
+h1{font-family:var(--head);font-size:clamp(2.1rem,9vw,4.6rem);line-height:.92;letter-spacing:-.03em;margin:.6rem 0 0}
+h2{font-family:var(--head);font-size:1.3rem;text-transform:uppercase;margin:.2rem 0 .8rem;letter-spacing:-.01em}
+h2 small{font-family:var(--mono);font-size:.8rem}
+.badge{display:inline-block;font-size:.72rem;background:var(--ink);color:var(--lime);padding:.25rem .8rem;border-radius:99px;text-transform:uppercase}
+.badge.off{background:#b45309;color:#fff}
+main{display:grid;gap:1rem;padding:1rem;max-width:1200px;margin:auto}
+section{background:var(--card);border-radius:32px;padding:1.1rem}
+#panelCam{background:var(--sand)}
+#mapa{height:320px;border-radius:28px;margin-bottom:.7rem;overflow:hidden;border:3px solid var(--ink)}
+.leaflet-tile-pane{filter:saturate(.45) sepia(.3) contrast(.95)}
+.pin span{display:block;width:28px;height:28px;border-radius:50%;background:var(--lime);border:4px solid var(--ink);box-shadow:0 0 0 7px #c6f43299}
+.fila{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0}
+button{font-family:var(--mono);font-weight:700;padding:.7rem 1.2rem;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;font-size:.9rem;cursor:pointer;min-height:44px;text-transform:uppercase}
+button.primario{background:var(--ink);color:var(--lime)}
+button.peligro{background:#fff;color:#b91c1c;border-color:#b91c1c}
+button:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 5px var(--ink)}
+input[type=text]{width:100%;padding:.8rem 1rem;margin:.4rem 0;border:2px solid var(--ink);border-radius:99px;background:#fff;color:var(--ink);font-family:var(--mono)}
+.chk,.alt{display:block;font-size:.82rem;margin:.5rem 0}
+video,img#vista{width:100%;max-height:300px;object-fit:cover;border-radius:36% 44% 38% 46%/30% 28% 34% 30%;background:#000;margin-bottom:.4rem}
+.alerta{background:var(--lime);color:var(--ink);border:2px solid var(--ink);padding:.7rem 1rem;border-radius:20px;margin-top:.6rem;font-size:.85rem}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+li{display:flex;gap:.8rem;align-items:center;background:var(--sand);border-radius:28px;padding:.6rem}
+li img,li .ico{width:76px;height:76px;flex:none}
+li img{object-fit:cover}
+.blob{border-radius:42% 58% 55% 45%/50% 42% 58% 50%}
+li .ico{display:grid;place-items:center;font-size:2rem;background:var(--pink)}
+li .txt{flex:1;font-size:.78rem;min-width:0;overflow-wrap:anywhere}
+.sticker{display:block;width:fit-content;background:var(--lime);border:2px solid var(--ink);font-weight:700;font-size:.7rem;padding:.1rem .6rem;border-radius:6px;transform:rotate(-3deg);margin-bottom:.3rem}
+li button{padding:.4rem .7rem;min-height:40px}
+.chico{font-size:.78rem;opacity:.8}
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:.5rem;background:var(--ink);padding:.5rem;border-radius:99px;z-index:1000}
+.dock a{width:52px;height:52px;display:grid;place-items:center;background:#fff;border-radius:50%;text-decoration:none;font-size:1.4rem}
+.dock a:first-child{background:var(--lime)}
+.modal{position:fixed;inset:0;background:#000c;display:grid;place-items:center;z-index:2000;padding:1rem}
+.modal[hidden]{display:none}.modal .card{background:var(--pink);border:3px solid var(--ink);padding:1.3rem;border-radius:32px;max-width:440px}
+@media (min-width:700px){main{grid-template-columns:1fr 1fr}#panelMapa,#panelReg{grid-column:1/-1}#mapa{height:400px}}
+@media (min-width:1000px){main{grid-template-columns:2fr 1fr}#panelMapa{grid-column:1}#panelCam{grid-column:2;grid-row:1}#panelReg{grid-column:1/-1}}
